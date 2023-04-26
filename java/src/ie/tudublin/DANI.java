@@ -42,3 +42,66 @@ public class DANI extends PApplet {
         
 	}
 }
+
+// follow class
+class Follow {
+    private String word;
+    private int count;
+    
+    public Follow(String word, int count) {
+        this.word = word;
+        this.count = count;
+    }
+    
+    public String getWord() {
+        return word;
+    }
+    
+    public int getCount() {
+        return count;
+    }
+    
+    public String toString() {
+        return word + ": " + count;
+    }
+}
+
+//word class
+class Word {
+    private String word;
+    private ArrayList<Follow> follows;
+
+    public Word(String word) {
+        this.word = word;
+        this.follows = new ArrayList<>();
+    }
+
+    public String getWord() {
+        return word;
+    }
+
+    public void addFollow(Follow follow) {
+        follows.add(follow);
+    }
+
+    public ArrayList<Follow> getFollows() {
+        return follows;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(word).append(": ");
+
+        for (Follow follow : follows) {
+            sb.append(follow.getWord()).append(", ");
+        }
+
+        // Remove the last comma and space
+        if (follows.size() > 0) {
+            sb.delete(sb.length() - 2, sb.length());
+        }
+
+        return sb.toString();
+    }
+}
